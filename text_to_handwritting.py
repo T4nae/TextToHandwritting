@@ -6,8 +6,8 @@ import os
 import random
 
 # Custom font style and font size
-myFont = ImageFont.truetype(r'Fonts/HomemadeApple.ttf', 30)
-imgpath= r"pages/"
+myFont = ImageFont.truetype(r'./Fonts/HomemadeApple.ttf', 30)
+imgpath= r"./pages/"
 imgforpdf = []
 
 def randpage():    
@@ -65,22 +65,27 @@ def makeimg(chunks):
  
 # Save the edited image
 def saveimg(img):
+    if os.path.exists(r"./temp"):
+        pass
+    else:
+        os.mkdir(r"./temp")
     save = randstring() + 'save.jpeg'
-    img.save(r"temp/" + save)
+    img.save(r"./temp/" + save)
     imgforpdf.append(save)
     #print(imgforpdf)
     
 def savepdf():
     images = []
     for i in imgforpdf:
-        im = Image.open(r"temp/" + i)
+        im = Image.open(r"./temp/" + i)
         images.append(im)
     string = randstring()        
     images[0].save(string + 'save.pdf', save_all = True, append_images=images[1:] )
     
 def deleteimg():
     for i in imgforpdf:
-        os.remove(r'temp/' + i)
+        os.remove(r'./temp/' + i)
+    r.mdir(r"./temp")
 
 def main():
     print("Enter Text or File Path")
