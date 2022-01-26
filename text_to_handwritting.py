@@ -14,7 +14,7 @@ def randpage():
     pages = ['paper.jpeg', 'paper2.jpeg']
 # Open an Image
 
-    img = Image.open(imgpath +pages[random.randint(0,2)])
+    img = Image.open(imgpath +pages[random.randint(0,1)])
     return img
  
 def randstring():
