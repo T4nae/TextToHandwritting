@@ -11,7 +11,7 @@ imgpath= r"./pages/"
 imgforpdf = []
 
 def randpage():    
-    pages = ['paper.jpeg', 'paper2.jpeg', 'paper3.jpeg']
+    pages = ['paper.jpeg', 'paper2.jpeg']
 # Open an Image
 
     img = Image.open(imgpath +pages[random.randint(0,2)])
