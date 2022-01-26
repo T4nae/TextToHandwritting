@@ -90,13 +90,26 @@ def deleteimg():
 def main():
     print("Enter Text or File Path")
     text = input('> ')
+    chunks=[]
+    #dividing text into chunks of 45 char
     if os.path.exists(text):
         with open(text , 'r') as file:
-            text = file.read()
-        
-    #dividing text into chunks of 45 char
-    chunksize = 45
-    chunks = [text[i:i+chunksize] for i in range(0, len(text), chunksize)]    
+            text = file.readlines()
+            for j in text:
+                if len(j) > 45:
+                    temp= [j[i:i+45] for i in range(0, len(j), 45)]
+                    for k in temp:
+                        chunks.append(k)
+                elif j == '\n':
+                    chunks.append(' '*45)
+                else:
+                    chunks.append(j)
+    else:
+            chunksize = 45
+            chunks = [text[i:i+chunksize] for i in range(0, len(text), chunksize)]                
+            #print(text)
+            
+    #print(chunks)
     saveimg(makeimg(chunks))
     savepdf()
     deleteimg()
