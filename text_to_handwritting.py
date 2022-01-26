@@ -85,7 +85,7 @@ def savepdf():
 def deleteimg():
     for i in imgforpdf:
         os.remove(r'./temp/' + i)
-    r.mdir(r"./temp")
+    os.rmdir(r"./temp")
 
 def main():
     print("Enter Text or File Path")
