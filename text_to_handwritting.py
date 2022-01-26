@@ -6,8 +6,8 @@ import os
 import random
 
 # Custom font style and font size
-myFont = ImageFont.truetype(r'/storage/emulated/0/Fonts/HomemadeApple.ttf', 30)
-imgpath= r"/storage/emulated/0/pydroid/text to handwriting/pages/"
+myFont = ImageFont.truetype(r'Fonts/HomemadeApple.ttf', 30)
+imgpath= r"pages/"
 imgforpdf = []
 
 def randpage():    
@@ -66,21 +66,21 @@ def makeimg(chunks):
 # Save the edited image
 def saveimg(img):
     save = randstring() + 'save.jpeg'
-    img.save(r"/storage/emulated/0/pydroid/text to handwriting/temp/" + save)
+    img.save(r"temp/" + save)
     imgforpdf.append(save)
     #print(imgforpdf)
     
 def savepdf():
     images = []
     for i in imgforpdf:
-        im = Image.open(r"/storage/emulated/0/pydroid/text to handwriting/temp/" + i)
+        im = Image.open(r"temp/" + i)
         images.append(im)
     string = randstring()        
-    images[0].save(r'/storage/emulated/0/pydroid/text to handwriting/' + string + 'save.pdf', save_all = True, append_images=images[1:] )
+    images[0].save(string + 'save.pdf', save_all = True, append_images=images[1:] )
     
 def deleteimg():
     for i in imgforpdf:
-        os.remove(r'/storage/emulated/0/pydroid/text to handwriting/temp/' + i)
+        os.remove(r'temp/' + i)
 
 def main():
     print("Enter Text or File Path")
